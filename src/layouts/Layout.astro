@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
 import Header from '../components/Header.svelte';
-import Navigation from '../components/Navigation.svelte';
 import Footer from '../components/Footer.svelte';
 ---
 
@@ -29,7 +28,6 @@ import Footer from '../components/Footer.svelte';
   </head>
   <body class="transition-colors duration-300">
     <Header client:load />
-    <Navigation client:load />
     <main>
       <slot />
     </main>
