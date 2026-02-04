@@ -17,8 +17,8 @@ import Footer from '../components/Footer.svelte';
     <script is:inline src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
   </head>
   <body class="transition-colors duration-300">
-    <Header />
-    <Navigation />
+    <Header client:load />
+    <Navigation client:load />
     <main>
       <slot />
     </main>

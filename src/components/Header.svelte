@@ -18,9 +18,9 @@
 
 <svelte:window on:load={initDarkMode} />
 
-<header class="sticky top-0 z-50 transition-colors duration-300" >
-  <div class="container mx-auto px-6 py-8 ">
-    <div class="flex justify-between items-start mb-8">
+<header class="sticky top-0 z-50 transition-colors duration-300">
+  <div class="container mx-auto px-6 py-6 md:py-8">
+    <div class="flex justify-between items-start mb-5 md:mb-6">
       <div class="flex-1">
         <h1
           class="text-4xl md:text-5xl font-bold mb-2"
@@ -95,7 +95,7 @@
       </div>
     </div>
 
-    <div class="h-px bg-current opacity-20 mb-8"></div>
+    <div class="h-px bg-current opacity-20 mb-4 md:mb-6"></div>
   </div>
 </header>
 

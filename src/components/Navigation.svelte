@@ -1,7 +1,7 @@
 <script>
   const sections = [
     { id: 'about', title: 'About', icon: 'mdi:card-account-details-outline' },
-    { id: 'work', title: 'Work', icon: 'mdi:briefcase-outline' },
+    { id: 'work', title: 'Work Experience', icon: 'mdi:briefcase-outline' },
     { id: 'studies', title: 'Studies', icon: 'mdi:school-outline' },
     { id: 'projects', title: 'Projects', icon: 'mdi:wrench-outline' },
     { id: 'certifications', title: 'Certifications', icon: 'mdi:certificate-outline' },
@@ -17,17 +17,17 @@
   };
 </script>
 
-<nav class="container mx-auto px-6 py-8">
-  <div class="space-y-4">
+<nav class="container mx-auto px-6 py-4 md:py-6">
+  <div class="space-y-3 md:space-y-4">
     {#each sections as section}
       <div class="section-item group" data-section={section.id}>
         <button
-          class="section-button w-full flex items-center justify-between py-4 px-6 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-left"
+          class="section-button w-full flex items-center justify-between py-3 md:py-4 px-4 md:px-6 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-left"
           aria-expanded={openSection === section.id}
           style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;"
           on:click={() => toggleSection(section.id)}
         >
-          <div class="flex items-center gap-4">
+          <div class="flex items-center gap-3 md:gap-4">
             <iconify-icon icon={section.icon} width="24" height="24"></iconify-icon>
             <span class="text-xl">{section.title}</span>
           </div>
@@ -44,7 +44,7 @@
         </button>
 
         {#if openSection === section.id}
-          <div class="section-content px-6 pb-4 border-l-2 border-current opacity-100 ml-3" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+          <div class="section-content px-4 md:px-6 pb-4 border-l-2 border-current opacity-100 ml-3" style="font-family: 'Plus Jakarta Sans', sans-serif;">
             <p class="text-gray-600 dark:text-gray-400">
               Content for {section.title} section coming soon...
             </p>
