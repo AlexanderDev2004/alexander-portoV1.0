@@ -1,29 +1,42 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
+import Header from '../components/Header.svelte';
+import Navigation from '../components/Navigation.svelte';
+import Footer from '../components/Footer.svelte';
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Alexander Porto</title>
-	</head>
-	<body>
-	
-		<slot />
-	</body>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Alexander Agung Raya - Software Developer</title>
+    <meta name="description" content="Portfolio of Alexander Agung Raya, a Software Developer from Indonesia" />
+  </head>
+  <body class="transition-colors duration-300">
+    <Header />
+    <Navigation />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
 
-<style >
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-		font-family: 'Plus Jakarta Sans', sans-serif;
-	}
+<style>
+  html {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    color-scheme: light dark;
+    color: light-dark(#000, #fff);
+    background-color: light-dark(#fff, #0f0f0f);
+  }
 </style>
+</style>
+

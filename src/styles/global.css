@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+/* Dark Mode Support */
+@supports (color: rgb(from white r g b)) {
+  :root {
+    color-scheme: light dark;
+  }
+  
+  html {
+    --light-bg: white;
+    --light-text: #000;
+    --dark-bg: #0f0f0f;
+    --dark-text: #fff;
+  }
+  
+  html.dark {
+    color-scheme: dark;
+  }
+}
+
 /* Plus Jakarta Sans Variable Font - Default */
 @font-face {
   font-family: 'Plus Jakarta Sans';
