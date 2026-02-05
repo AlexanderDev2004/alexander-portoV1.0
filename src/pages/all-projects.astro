@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectsGrid from '../components/ProjectsGrid.svelte';
+import { projects } from '../data/projects';
+---
+
+<Layout>
+  <div class="container mx-auto px-6 py-8 max-w-6xl">
+    <!-- Back Button -->
+    <a 
+      href="/"
+      class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline mb-8"
+      style="font-family: 'Plus Jakarta Sans', sans-serif;"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back
+    </a>
+
+    <!-- Header -->
+    <div class="mb-12">
+      <h1 
+        class="text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4"
+        style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 3rem;"
+      >
+        Personal Projects
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+        These are some of my personal projects that I made in the past. Some of them are still in use, some are not. Mostly made them just for fun and to learn new things!
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <ProjectsGrid client:load items={projects} />
+  </div>
+</Layout>
+
+<style>
+  :global(body) {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+</style>
