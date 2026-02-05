@@ -2,8 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.svelte';
 import Work from '../components/Work.svelte';
+import Education from '../components/Education.svelte';
 import AboutContent from '../content/about.md';
 import { works } from '../data/work';
+import { education } from '../data/education';
 ---
 
 <Layout>
@@ -13,6 +15,9 @@ import { works } from '../data/work';
     </div>
     <div slot="work">
       <Work client:load works={works} />
+    </div>
+    <div slot="studies">
+      <Education client:load items={education} />
     </div>
   </Navigation>
 </Layout>
