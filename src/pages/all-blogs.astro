@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BlogsGrid from "../components/BlogsGrid.svelte";
+import { getCollection } from "astro:content";
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+
+const blogEntries = await getCollection('blogs');
+const blogs = blogEntries
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .map((entry) => ({
+    title: entry.data.title,
+    date: formatDate(entry.data.date),
+    description: entry.data.description,
+    tags: entry.data.tags,
+    slug: entry.slug,
+  }));
+---
+
+<Layout>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <!-- Navigation -->
+    <a 
+      href="/"
+      class="inline-flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white mb-8"
+      style="font-family: 'Plus Jakarta Sans', sans-serif;"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back
+    </a>
+
+
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-3">
+        ALL POSTS
+      </h1>
+      <p class="text-gray-600 dark:text-gray-400">
+        A collection of thoughts, experiences, and technical insights shared
+        over time.
+      </p>
+    </div>
+
+    <!-- Blogs Grid -->
+    <BlogsGrid client:load items={blogs} />
+  </div>
+</Layout>

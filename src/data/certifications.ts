@@ -25,7 +25,7 @@ export const certifications: CertificationItem[] = [
     description: "Certified SQL Basic from Hackerrank",
     certificateLink: "https://www.hackerrank.com/certificates/iframe/f1568de0c5e5",
     certificateImage: "Certifications/Sql_Basic.png",
-    tags: ["Mikrotik", "Networking" ]
+    tags: ["SQL", "Hackerrank"]
   }
   
 ];
