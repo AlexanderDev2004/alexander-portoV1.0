@@ -12,21 +12,24 @@
 
   export { items as items };
 
+  const normalize = (value: string) => value.toLowerCase().trim();
+
   $: filteredItems = items.filter((blog) => {
-    const query = searchQuery.toLowerCase().trim();
+    const query = normalize(searchQuery);
     if (!query) return true;
 
-    // Search by tag (starts with #)
+    const tags = (blog.tags ?? []).map(normalize);
+
     if (query.startsWith('#')) {
-      const tagQuery = query.substring(1);
-      return blog.tags.some((tag) => tag.toLowerCase().includes(tagQuery));
+      const tagQuery = normalize(query.replace(/^#+/, ''));
+      return tagQuery.length > 0 && tags.some((tag) => tag === tagQuery);
     }
 
-    // Search by title or description
-    return (
-      blog.title.toLowerCase().includes(query) ||
-      blog.description.toLowerCase().includes(query)
-    );
+    const title = normalize(blog.title ?? '');
+    const description = normalize(blog.description ?? '');
+    const matchesTags = tags.some((tag) => tag.includes(query));
+
+    return title.includes(query) || description.includes(query) || matchesTags;
   });
 </script>
 
@@ -43,7 +46,7 @@
 
   <!-- Blog Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {#each filteredItems as blog (blog.id)}
+    {#each filteredItems as blog (blog.slug)}
       <div class="border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200">
         <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-2">
           <iconify-icon icon="mdi:calendar" width="16" height="16"></iconify-icon>
