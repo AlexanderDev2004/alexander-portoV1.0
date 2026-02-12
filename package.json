@@ -17,8 +17,5 @@
     "svelte": "^5.49.1",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
-  },
-  "devDependencies": {
-    "@astrojs/node": "^9.5.2"
   }
 }

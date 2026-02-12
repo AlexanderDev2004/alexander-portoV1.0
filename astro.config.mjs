@@ -4,7 +4,6 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import svelte from '@astrojs/svelte';
 import icon from 'astro-icon';
-import node from '@astrojs/node';
 // https://astro.build/config
 export default defineConfig({
   integrations: [svelte(), icon()],
@@ -21,6 +20,5 @@ export default defineConfig({
     syntaxHighlight: 'prism'
   },
 
-  output: 'server',
-  adapter: node({ mode: 'standalone' }),
+  output: 'static',
 });
