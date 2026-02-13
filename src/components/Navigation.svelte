@@ -10,10 +10,15 @@
     { id: 'contact', title: 'Contact', icon: 'mdi:phone-outline' },
   ];
 
-  let openSection = '';
+  let openSections = new Set();
 
   const toggleSection = (id) => {
-    openSection = openSection === id ? '' : id;
+    if (openSections.has(id)) {
+      openSections.delete(id);
+    } else {
+      openSections.add(id);
+    }
+    openSections = new Set(openSections);
   };
 </script>
 
@@ -23,7 +28,7 @@
       <div class="section-item group" data-section={section.id}>
         <button
           class="section-button w-full flex items-center justify-between py-3 md:py-4 px-4 md:px-6 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-left"
-          aria-expanded={openSection === section.id}
+          aria-expanded={openSections.has(section.id)}
           style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600;"
           on:click={() => toggleSection(section.id)}
         >
@@ -32,7 +37,7 @@
             <span class="text-xl">{section.title}</span>
           </div>
           <svg
-            class={`w-6 h-6 transition-transform duration-300 ${openSection === section.id ? 'rotate-180' : ''}`}
+            class={`w-6 h-6 transition-transform duration-300 ${openSections.has(section.id) ? 'rotate-180' : ''}`}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="none"
@@ -43,7 +48,7 @@
           </svg>
         </button>
 
-        {#if openSection === section.id}
+        {#if openSections.has(section.id)}
           <div class="section-content px-4 md:px-6 pb-4 border-l-2 border-current opacity-100 ml-3" style="font-family: 'Plus Jakarta Sans', sans-serif;">
             {#if section.id === 'about'}
               <slot name="about">
