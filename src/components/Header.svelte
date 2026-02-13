@@ -29,7 +29,7 @@
             class="px-3 py-1 border border-current rounded-full text-sm"
             style="font-family: 'Plus Jakarta Sans', sans-serif;"
           >
-            he/him/él
+            he/him/他
           </span>
         </div>
 
