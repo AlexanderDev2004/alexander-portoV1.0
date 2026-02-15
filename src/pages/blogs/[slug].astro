@@ -22,6 +22,9 @@ const { Content } = await blog.render();
 ---
 
 <Layout>
+  <div class="reading-progress" aria-hidden="true">
+    <div class="reading-progress__bar" id="readingProgressBar"></div>
+  </div>
   <div class="max-w-4xl mx-auto px-4 py-8">
     <!-- Back Button -->
     <a
@@ -33,7 +36,7 @@ const { Content } = await blog.render();
     </a>
 
     <!-- Header -->
-    <article class="space-y-6">
+    <article class="space-y-6 expand-reveal">
       <header class="space-y-4 border-b border-gray-200 dark:border-gray-700 pb-8">
         <h1 class="text-4xl font-bold text-gray-900 dark:text-white">
           {blog.data.title}
@@ -80,4 +83,53 @@ const { Content } = await blog.render();
       </footer>
     </article>
   </div>
+  <script is:inline>
+    const progressBar = document.getElementById('readingProgressBar');
+    const updateProgress = () => {
+      if (!progressBar) return;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+      progressBar.style.transform = `scaleX(${progress})`;
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        updateProgress();
+        ticking = false;
+      });
+    };
+
+    updateProgress();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', updateProgress);
+  </script>
 </Layout>
+
+<style>
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(148, 163, 184, 0.2);
+    z-index: 60;
+  }
+
+  .reading-progress__bar {
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: linear-gradient(90deg, #38bdf8, #3b82f6);
+    transition: transform 0.08s ease-out;
+  }
+
+  :global(html.dark) .reading-progress {
+    background: rgba(148, 163, 184, 0.18);
+  }
+</style>

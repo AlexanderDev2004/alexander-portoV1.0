@@ -2,15 +2,16 @@
   export let items = [];
 </script>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-  {#each items as project (project.slug)}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+  {#each items as project, index (project.slug)}
     <a
       href={`/projects/${project.slug}`}
-      class="group border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden hover:border-blue-500 dark:hover:border-blue-400 transition-colors cursor-pointer"
+      class="group border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden hover:border-blue-500 dark:hover:border-blue-400 transition-colors cursor-pointer reveal pressable"
+      style={`--reveal-delay: ${index}`}
     >
       <!-- Project Image -->
       {#if project.image}
-        <div class="relative overflow-hidden bg-gray-200 dark:bg-gray-800 h-48">
+        <div class="relative overflow-hidden bg-gray-200 dark:bg-gray-800 h-40 sm:h-44 md:h-48">
           <img 
             src={project.image} 
             alt={project.title}
@@ -26,10 +27,10 @@
       {/if}
 
       <!-- Project Info -->
-      <div class="p-5">
+      <div class="p-4 sm:p-5">
         <div class="flex items-baseline gap-2 mb-2 flex-wrap">
           <h3 
-            class="text-lg font-bold text-gray-900 dark:text-gray-100"
+            class="text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100"
             style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;"
           >
             {project.title}
@@ -49,14 +50,14 @@
           <div class="flex flex-wrap gap-1.5">
             {#each project.technologies.slice(0, 3) as tech}
               <span 
-                class="px-2 py-1 text-xs border border-gray-400 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300"
+                class="px-2 py-1 text-[11px] sm:text-xs border border-gray-400 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300"
               >
                 {tech.name}
               </span>
             {/each}
             {#if project.technologies.length > 3}
               <span 
-                class="px-2 py-1 text-xs border border-gray-400 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300"
+                class="px-2 py-1 text-[11px] sm:text-xs border border-gray-400 dark:border-gray-600 rounded text-gray-700 dark:text-gray-300"
               >
                 +{project.technologies.length - 3}
               </span>

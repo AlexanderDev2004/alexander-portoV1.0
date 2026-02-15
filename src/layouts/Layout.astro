@@ -89,6 +89,24 @@ const ogImage = new URL('/IconAlex.jpg', Astro.site ?? Astro.url);
         addCopyButtons();
       }
     </script>
+    <script is:inline>
+      if ('startViewTransition' in document) {
+        document.addEventListener('click', (event) => {
+          const target = event.target;
+          const link = target instanceof Element ? target.closest('a[href]') : null;
+          if (!link) return;
+          const href = link.getAttribute('href');
+          if (!href || href.startsWith('#')) return;
+          if (link.target === '_blank') return;
+          if (href.startsWith('http') && !href.startsWith(window.location.origin)) return;
+
+          event.preventDefault();
+          document.startViewTransition(() => {
+            window.location.href = link.href;
+          });
+        });
+      }
+    </script>
   </body>
 </html>
 

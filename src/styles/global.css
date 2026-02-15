@@ -197,3 +197,102 @@ html:not(.dark) code {
   background: rgba(15, 23, 42, 0.08);
   color: #0f172a;
 }
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.reveal {
+  animation: reveal-up 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--reveal-delay, 0) * 60ms);
+}
+
+.reveal-pop {
+  animation: reveal-pop 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(var(--reveal-delay, 0) * 60ms);
+}
+
+@keyframes expand-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.expand-reveal {
+  animation: expand-reveal 0.2s ease both;
+}
+
+.pressable {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.pressable:active {
+  transform: scale(0.985);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-pop,
+  .expand-reveal {
+    animation: none;
+  }
+
+  .pressable {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) {
+    animation: fade-slide-out 0.18s ease both;
+  }
+
+  ::view-transition-new(root) {
+    animation: fade-slide-in 0.22s ease both;
+  }
+}
+
+@keyframes fade-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}

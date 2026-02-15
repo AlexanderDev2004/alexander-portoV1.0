@@ -14,16 +14,16 @@
 </script>
 
 <header class="sticky top-0 z-50 transition-colors duration-300">
-  <div class="container mx-auto px-6 py-6 md:py-8">
-    <div class="flex justify-between items-start mb-5 md:mb-6">
+  <div class="container mx-auto px-4 sm:px-5 md:px-6 py-5 md:py-8">
+    <div class="flex justify-between items-start mb-4 md:mb-6">
       <div class="flex-1">
-        <a href="/" aria-label="Home" class="text-4xl md:text-5xl font-bold mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;">
+        <a href="/" aria-label="Home" class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 leading-tight" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;">
           Alexander Agung Raya
         </a>
 
-        <div class="flex items-center gap-3 mt-3 mb-4 py-0.5">
+        <div class="flex items-center gap-2 sm:gap-3 mt-2 sm:mt-3 mb-3 sm:mb-4 py-0.5">
           <span
-            class="px-3 py-1 border border-current rounded-full text-sm"
+            class="px-2.5 sm:px-3 py-1 border border-current rounded-full text-xs sm:text-sm"
             style="font-family: 'Plus Jakarta Sans', sans-serif;"
           >
             he/him/他
@@ -32,16 +32,15 @@
 
         <div class="space-y-1">
           <p
-            class="text-lg"
+            class="text-base sm:text-lg"
             style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 500;"
           >
             Software Developer
           </p>
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 text-sm sm:text-base">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              class="w-5 h-5 sm:w-6 sm:h-6"
               viewBox="0 0 24 24"
               fill="currentColor"
             >
@@ -50,9 +49,7 @@
                 d="M12 2C7.589 2 4 5.589 4 9.995C3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12c0-4.411-3.589-8-8-8m0 12c-2.21 0-4-1.79-4-4s1.79-4 4-4s4 1.79 4 4s-1.79 4-4 4"
               />
             </svg>
-            <span style="font-family: 'Plus Jakarta Sans', sans-serif;"
-              >Indonesia, East Java</span
-            >
+            <span style="font-family: 'Plus Jakarta Sans', sans-serif;">Indonesia, East Java</span>
           </div>
         </div>
       </div>

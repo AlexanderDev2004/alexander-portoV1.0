@@ -14,31 +14,34 @@
 
 <div class="space-y-4">
   {#each items.slice(0, 5) as project, index (project.slug)}
-    <div class="border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors overflow-hidden">
+    <div
+      class="border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors overflow-hidden reveal"
+      style={`--reveal-delay: ${index}`}
+    >
       <!-- Header yang bisa di-click -->
       <button
         type="button"
         onclick={(e) => { e.preventDefault(); toggleExpand(index); }}
-        class="w-full text-left p-5 flex justify-between items-start gap-4 hover:bg-opacity-50 cursor-pointer"
+        class="w-full text-left p-4 sm:p-5 flex justify-between items-start gap-4 hover:bg-opacity-50 cursor-pointer pressable"
       >
         <div class="flex-1 min-w-0">
           <!-- Project Title as Link -->
           <div class="flex items-baseline gap-3 mb-3 flex-wrap">
             <a 
               href={`/projects/${project.slug}`}
-              class="text-lg font-bold hover:underline text-blue-600 dark:text-blue-400"
+              class="text-base sm:text-lg font-bold hover:underline text-blue-600 dark:text-blue-400"
               style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;"
               onclick={(e) => e.stopPropagation()}
             >
               {project.title}
             </a>
-            <span class="text-xs font-semibold px-3 py-1 border border-gray-400 dark:border-gray-600 rounded">
+            <span class="text-[11px] sm:text-xs font-semibold px-2.5 sm:px-3 py-1 border border-gray-400 dark:border-gray-600 rounded">
               {project.year}
             </span>
           </div>
           
           <!-- Description -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 line-clamp-2" style="font-family: 'Plus Jakarta Sans', sans-serif;">
             {project.description}
           </p>
         </div>
@@ -60,7 +63,7 @@
 
       <!-- Content yang expandable -->
       {#if expandedIndex === index}
-        <div class="px-5 pb-5 border-t border-gray-300 dark:border-gray-700 space-y-4">
+        <div class="px-4 sm:px-5 pb-4 sm:pb-5 border-t border-gray-300 dark:border-gray-700 space-y-4 expand-reveal">
           <!-- Full Description -->
           <div>
             <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -69,13 +72,13 @@
           </div>
 
           <!-- Links -->
-          <div class="flex gap-3 flex-wrap">
+          <div class="flex gap-2 sm:gap-3 flex-wrap">
             {#if project.projectLink}
               <a 
                 href={project.projectLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-4 py-2 border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-400 rounded hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors text-sm font-medium"
+                class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 border border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-400 rounded hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors text-xs sm:text-sm font-medium"
                 onclick={(e) => e.stopPropagation()}
               >
                 <span>View Project</span>
@@ -90,7 +93,7 @@
                 href={project.repoLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-4 py-2 border border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-medium"
+                class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 border border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-xs sm:text-sm font-medium"
                 onclick={(e) => e.stopPropagation()}
               >
                 <span>View Repo</span>
@@ -113,7 +116,7 @@
                     href={tech.docLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 px-3 py-2 border border-gray-400 dark:border-gray-600 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm"
+                    class="inline-flex items-center gap-2 px-2.5 sm:px-3 py-2 border border-gray-400 dark:border-gray-600 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-xs sm:text-sm"
                     onclick={(e) => e.stopPropagation()}
                     title={`Learn more about ${tech.name}`}
                   >

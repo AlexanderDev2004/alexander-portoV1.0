@@ -14,12 +14,15 @@
 
 <div class="space-y-3">
   {#each items as item, index (index)}
-    <div class="border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors">
+    <div
+      class="border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors reveal"
+      style={`--reveal-delay: ${index}`}
+    >
       <!-- Header yang bisa di-click -->
       <button
         type="button"
         onclick={(e) => { e.preventDefault(); toggleExpand(index); }}
-        class="w-full text-left p-5 flex justify-between items-start gap-4 hover:bg-opacity-50 cursor-pointer"
+        class="w-full text-left p-5 flex justify-between items-start gap-4 hover:bg-opacity-50 cursor-pointer pressable"
       >
         <div class="flex-1 min-w-0">
           <!-- Degree Title -->
@@ -58,7 +61,7 @@
 
       <!-- Content yang expandable (untuk future content seperti GPA, courses, dll) -->
       {#if expandedIndex === index}
-        <div class="px-5 pb-5 border-t border-gray-300 dark:border-gray-700 space-y-4">
+        <div class="px-5 pb-5 border-t border-gray-300 dark:border-gray-700 space-y-4 expand-reveal">
           <p class="text-sm text-gray-700 dark:text-gray-300">
             Coming Soon...
           </p>

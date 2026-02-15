@@ -13,8 +13,11 @@
 </script>
 
 <div class="space-y-4">
-  {#each items.slice(0, 2) as blog (blog.slug)}
-    <div class="border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900 transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800">
+  {#each items.slice(0, 2) as blog, index (blog.slug)}
+    <div
+      class="border border-gray-300 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900 transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800 reveal pressable"
+      style={`--reveal-delay: ${index}`}
+    >
       <div class="flex items-start justify-between gap-3">
         <div class="flex-1 min-w-0">
           <h3 class="text-lg font-bold text-gray-900 dark:text-blue-400 line-clamp-2">
