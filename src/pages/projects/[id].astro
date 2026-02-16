@@ -60,7 +60,7 @@ const { Content } = await project.render();
         <img 
           src={project.data.image} 
           alt={project.data.title}
-          class="w-full rounded-lg border border-gray-300 dark:border-gray-700"
+          class="project-hero w-full rounded-lg border border-gray-300 dark:border-gray-700"
         />
       </div>
     )}
@@ -163,5 +163,21 @@ const { Content } = await project.render();
 
   :global(.prose strong) {
     font-weight: 700;
+  }
+
+  .project-hero {
+    max-width: 480px;
+    max-height: 70vh;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    object-fit: contain;
+    background: rgba(15, 23, 42, 0.35);
+  }
+
+  @media (min-width: 768px) {
+    .project-hero {
+      max-width: 520px;
+    }
   }
 </style>
