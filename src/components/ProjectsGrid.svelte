@@ -19,7 +19,7 @@
           />
         </div>
       {:else}
-        <div class="bg-gradient-to-br from-blue-400 to-blue-600 h-48 flex items-center justify-center">
+        <div class="bg-linear-to-br from-blue-400 to-blue-600 h-48 flex items-center justify-center">
           <span class="text-white font-bold text-2xl" style="font-family: 'Plus Jakarta Sans', sans-serif;">
             {project.title.charAt(0)}
           </span>

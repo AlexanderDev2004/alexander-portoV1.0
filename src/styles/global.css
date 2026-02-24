@@ -180,22 +180,22 @@ pre code {
 }
 
 code {
-  background: rgba(148, 163, 184, 0.18);
-  color: #e2e8f0;
+  background: rgba(15, 23, 42, 0.08);
+  color: inherit;
   padding: 0.15rem 0.35rem;
   border-radius: 6px;
   font-size: 0.85em;
+}
+
+html.dark code {
+  background: rgba(148, 163, 184, 0.28);
+  color: inherit;
 }
 
 html:not(.dark) pre {
   background: #0f172a;
   color: #f8fafc;
   border-color: #e2e8f0;
-}
-
-html:not(.dark) code {
-  background: rgba(15, 23, 42, 0.08);
-  color: #0f172a;
 }
 
 @keyframes reveal-up {

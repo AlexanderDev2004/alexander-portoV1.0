@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Bookmarks from '../components/Bookmarks.svelte';
+import BookmarksSection from '../components/Bookmarks.svelte';
 import { bookmarks } from '../data/bookmarks';
 ---
 
@@ -29,16 +29,16 @@ import { bookmarks } from '../data/bookmarks';
       <!-- Description -->
       <div class="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
         <p>
-          Oh No, U Found My Secret Stash! Just kidding, this is not really a secret but I just wanted to make it sound more fun. I have been collecting bookmarks for a long time and I thought it would be nice to share them with others.
+          Well, seems like you've found this not-so-secret page :)
         </p>
         <p>
-            These bookmarks are mostly related to programming, web development, design, and other tech-related topics or things that I find interesting. I also have some bookmarks that are not related to tech but I thought they were interesting and worth sharing.
+          This is where I keep my bookmarks or things that I learned. It's meant to be a public archive of things that I find interesting and useful whether it be an article, random thoughts, videos, literally anything. I hope you find something useful here too! These are all coming from my personal collections and research.
         </p>
       </div>
     </div>
 
     <!-- Bookmarks Content -->
-    <Bookmarks client:load categories={bookmarks} />
+    <BookmarksSection client:load categories={bookmarks} />
   </div>
 
   <style>

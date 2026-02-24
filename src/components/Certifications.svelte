@@ -45,7 +45,7 @@
         </div>
 
         <!-- Chevron Icon -->
-        <div class="flex items-center flex-shrink-0">
+        <div class="flex items-center">
           <svg
             class="w-5 h-5 transition-transform duration-300 {expandedIndex === index ? 'rotate-180' : ''}"
             xmlns="http://www.w3.org/2000/svg"

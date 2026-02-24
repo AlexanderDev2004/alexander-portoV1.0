@@ -62,6 +62,12 @@
           <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif;">
             {work.jobTitle}
           </p>
+
+          {#if work.country}
+            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-2" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+              {work.country}
+            </p>
+          {/if}
         </div>
 
         <!-- Date + Chevron -->

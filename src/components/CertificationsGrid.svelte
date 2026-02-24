@@ -15,7 +15,7 @@
           />
         </div>
       {:else}
-        <div class="bg-gradient-to-br from-green-400 to-green-600 h-48 flex items-center justify-center">
+        <div class="bg-linear-to-br from-green-400 to-green-600 h-48 flex items-center justify-center">
           <iconify-icon icon="mdi:certificate-outline" width="80" height="80" class="text-white"></iconify-icon>
         </div>
       {/if}

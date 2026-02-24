@@ -87,7 +87,7 @@
                         loading="lazy"
                         on:error={handleImageError}
                       />
-                      <div class="hidden absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center">
+                      <div class="absolute inset-0 bg-gray-200 dark:bg-gray-700 items-center justify-center" style="display: none;">
                         <iconify-icon icon="mdi:image-off" width="32" height="32" class="text-gray-400"></iconify-icon>
                       </div>
                     </div>
@@ -131,6 +131,7 @@
   :global(.line-clamp-2) {
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

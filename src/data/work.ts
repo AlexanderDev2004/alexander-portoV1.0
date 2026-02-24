@@ -1,6 +1,7 @@
 export interface WorkItem {
   company: string;
   jobTitle: string;
+  country: string;
   status: string[];
   startDate: string;
   endDate: string | null;
@@ -13,6 +14,7 @@ export const works: WorkItem[] = [
   {
     company: "Ariverse Studio",
     jobTitle: "Game Developer",
+    country: "Indonesia",
     status: ["REMOTE", "PART TIME"],
     startDate: "Sep 2025",
     endDate: null,
@@ -32,6 +34,7 @@ export const works: WorkItem[] = [
   {
     company: "PT XYZ",
     jobTitle: "Full Stack Developer",
+    country: "Indonesia",
     status: ["ON-SITE", "FULL-TIME"],
     startDate: "Jan 2026",
     endDate: null,

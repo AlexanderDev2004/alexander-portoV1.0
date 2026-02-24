@@ -46,6 +46,7 @@ const projects = projectEntries.map((entry) => ({
 ---
 
 <Layout>
+  <!-- @ts-ignore Astro + Svelte named slots are used below -->
   <Navigation client:load>
     <div slot="about" class="space-y-3 text-gray-700 dark:text-gray-300 reveal">
       <AboutContent />
