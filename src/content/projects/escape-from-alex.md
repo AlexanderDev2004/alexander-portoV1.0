@@ -22,6 +22,9 @@ technologies:
 
 Escape From Alex is a horror game where you must escape from a haunted house. I used Unity and C# to develop this game, and it was created as a requirement for my vocational school graduation. with my team.
 
+### Demo Video
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DpAjVNlDFwc?si=XNdDRVMlMPc7OdqX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ### Key Features
 
 - **Exploration:** Navigate through diverse environments filled with hidden secrets and challenges.
