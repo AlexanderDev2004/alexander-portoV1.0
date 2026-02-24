@@ -51,9 +51,44 @@ const ogImage = new URL('/IconAlex.jpg', Astro.site ?? Astro.url);
     </main>
     <Footer />
     <script is:inline>
+      const formatCodeLanguage = (value) => {
+        if (!value) return 'Code';
+        const normalized = value.toLowerCase();
+        const aliases = {
+          sh: 'Bash',
+          shell: 'Bash',
+          zsh: 'Bash',
+          console: 'Bash',
+          js: 'JavaScript',
+          ts: 'TypeScript',
+          py: 'Python',
+          yml: 'YAML',
+          md: 'Markdown',
+        };
+        return aliases[normalized] ?? (normalized.charAt(0).toUpperCase() + normalized.slice(1));
+      };
+
       const addCopyButtons = () => {
         document.querySelectorAll('pre').forEach((block) => {
-          if (block.querySelector('.code-copy-button')) return;
+          if (block.closest('.code-block-wrap')) return;
+
+          const codeEl = block.querySelector('code');
+          const className = codeEl?.className ?? '';
+          const languageClass = className
+            .split(' ')
+            .find((entry) => entry.startsWith('language-'));
+          const language = formatCodeLanguage(languageClass?.replace('language-', ''));
+
+          const wrapper = document.createElement('div');
+          wrapper.className = 'code-block-wrap';
+
+          const toolbar = document.createElement('div');
+          toolbar.className = 'code-block-toolbar';
+
+          const languageBadge = document.createElement('span');
+          languageBadge.className = 'code-language';
+          languageBadge.innerHTML = '<span class="code-language-icon">&lt;/&gt;</span><span>' + language + '</span>';
+
           const button = document.createElement('button');
           button.type = 'button';
           button.className = 'code-copy-button';
@@ -61,7 +96,7 @@ const ogImage = new URL('/IconAlex.jpg', Astro.site ?? Astro.url);
           button.innerHTML = 'Copy';
 
           button.addEventListener('click', async () => {
-            const code = block.querySelector('code')?.innerText ?? '';
+            const code = codeEl?.innerText ?? '';
             try {
               await navigator.clipboard.writeText(code);
               button.innerHTML = 'Copied';
@@ -78,8 +113,14 @@ const ogImage = new URL('/IconAlex.jpg', Astro.site ?? Astro.url);
             }
           });
 
-          block.style.position = 'relative';
-          block.appendChild(button);
+          const parent = block.parentNode;
+          if (!parent) return;
+          parent.insertBefore(wrapper, block);
+          wrapper.appendChild(toolbar);
+          wrapper.appendChild(block);
+
+          toolbar.appendChild(languageBadge);
+          toolbar.appendChild(button);
         });
       };
 
