@@ -124,10 +124,52 @@ const ogImage = new URL('/IconAlex.jpg', Astro.site ?? Astro.url);
         });
       };
 
+      const enhanceRichMedia = () => {
+        document.querySelectorAll('.prose iframe, .prose video, .prose audio').forEach((media) => {
+          if (!(media instanceof HTMLElement)) return;
+          if (media.closest('.media-card-wrap')) return;
+
+          const wrapper = document.createElement('div');
+          wrapper.className = 'media-card-wrap';
+
+          const parent = media.parentNode;
+          if (!parent) return;
+          parent.insertBefore(wrapper, media);
+
+          if (media.tagName.toLowerCase() === 'iframe') {
+            const frame = document.createElement('div');
+            frame.className = 'media-frame';
+            wrapper.appendChild(frame);
+            frame.appendChild(media);
+
+            media.setAttribute('loading', media.getAttribute('loading') ?? 'lazy');
+            media.removeAttribute('width');
+            media.removeAttribute('height');
+            media.classList.add('media-embed');
+            return;
+          }
+
+          if (media.tagName.toLowerCase() === 'video') {
+            if (!media.getAttribute('controls')) media.setAttribute('controls', '');
+            media.setAttribute('preload', media.getAttribute('preload') ?? 'metadata');
+            media.classList.add('media-video');
+            wrapper.appendChild(media);
+            return;
+          }
+
+          media.classList.add('media-audio');
+          wrapper.appendChild(media);
+        });
+      };
+
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', addCopyButtons);
+        document.addEventListener('DOMContentLoaded', () => {
+          addCopyButtons();
+          enhanceRichMedia();
+        });
       } else {
         addCopyButtons();
+        enhanceRichMedia();
       }
     </script>
     <script is:inline>

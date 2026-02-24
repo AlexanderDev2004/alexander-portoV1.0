@@ -7,7 +7,6 @@
     { id: 'certifications', title: 'Certifications', icon: 'mdi:certificate-outline' },
     { id: 'blogs', title: 'Blogs', icon: 'mdi:pencil-outline' },
     { id: 'files', title: 'Files', icon: 'mdi:folder-outline' },
-    { id: 'contact', title: 'Contact', icon: 'mdi:phone-outline' },
   ];
 
   let openSections = new Set();
@@ -92,12 +91,6 @@
               </slot>
             {:else if section.id === 'files'}
               <slot name="files">
-                <p class="text-gray-600 dark:text-gray-400">
-                  Content for {section.title} section coming soon...
-                </p>
-              </slot>
-            {:else if section.id === 'contact'}
-              <slot name="contact">
                 <p class="text-gray-600 dark:text-gray-400">
                   Content for {section.title} section coming soon...
                 </p>

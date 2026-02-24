@@ -227,6 +227,58 @@ html:not(.dark) pre {
   color: #f8fafc;
 }
 
+/* Markdown Media Cards (iframe / video / audio) */
+.media-card-wrap {
+  margin: 1.15rem 0;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  background: #0f172a;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.25);
+}
+
+.media-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #020617;
+}
+
+.media-embed {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.media-video {
+  display: block;
+  width: 100%;
+  max-height: min(72vh, 720px);
+  border: 0;
+  background: #020617;
+}
+
+.media-audio {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 0.85rem;
+  background: #0f172a;
+}
+
+html:not(.dark) .media-card-wrap {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+html:not(.dark) .media-frame,
+html:not(.dark) .media-video,
+html:not(.dark) .media-audio {
+  background: #e2e8f0;
+}
+
 @keyframes reveal-up {
   from {
     opacity: 0;

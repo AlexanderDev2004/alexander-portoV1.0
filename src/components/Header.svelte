@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+  import { contacts } from '../data/contact';
+
   const toggleDarkMode = () => {
     const html = document.documentElement;
     const isDark = html.classList.contains("dark");
@@ -50,6 +52,21 @@
               />
             </svg>
             <span style="font-family: 'Plus Jakarta Sans', sans-serif;">Indonesia, East Java</span>
+          </div>
+
+          <div class="flex flex-wrap gap-2 sm:gap-3 mt-4">
+            {#each contacts as item}
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-3 py-1.5 border border-gray-400 dark:border-gray-600 text-gray-900 dark:text-gray-100 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-xs sm:text-sm font-medium"
+                style="font-family: 'Plus Jakarta Sans', sans-serif;"
+              >
+                <iconify-icon icon={item.icon} width="16" height="16"></iconify-icon>
+                <span>{item.label}</span>
+              </a>
+            {/each}
           </div>
         </div>
       </div>

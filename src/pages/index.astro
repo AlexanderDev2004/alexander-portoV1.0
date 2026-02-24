@@ -7,14 +7,12 @@ import Projects from '../components/Projects.svelte';
 import Certifications from '../components/Certifications.svelte';
 import Blogs from '../components/Blogs.svelte';
 import Files from '../components/Files.svelte';
-import Contact from '../components/Contact.svelte';
 import AboutContent from '../content/about.md';
 import { getCollection } from 'astro:content';
 import { works } from '../data/work';
 import { education } from '../data/education';
 import { certifications } from '../data/certifications';
 import { files } from '../data/files';
-import { contacts } from '../data/contact';
 
 const blogEntries = await getCollection('blogs');
 const blogs = blogEntries
@@ -68,9 +66,6 @@ const projects = projectEntries.map((entry) => ({
     </div>
     <div slot="files">
       <Files client:load items={files} />
-    </div>
-    <div slot="contact">
-      <Contact client:load items={contacts} />
     </div>
   </Navigation>
 </Layout>
